@@ -1,0 +1,35 @@
+.app-dark-theme {
+  // Button Colors
+  --color-button-active: #9bbdff;
+  --color-button-hover: #9bbdff33;
+  --color-button-default: #9bbdff1f;
+  --color-button-inactive: #9bbdff0a;
+  --color-button-inactive-selected: #9bbdff14;
+
+  // additional
+  --color-button-active-state: #004fc5;
+  --color-button-bg-hover: rgb(28 30 41 / 8%);
+  --color-button-bg-active: rgb(28 30 41 / 20%);
+
+  // Text Colors
+  --color-text-link: #9bbdff;
+  --color-text-title: #dfe4f0;
+  --color-text-content: #aaafbf;
+  --color-button-inactive-shades: #9bbdff2e;
+  --color-button-inactive-selected-shades: #9bbdff40;
+  --color-text-white: #fff;
+
+  // Other Colors
+  --color-other-stroke-btn: #5076ffb2;
+  --color-other-stroke: #35383d;
+  --color-other-stroke-medium: #bfc8d0;
+  --color-other-stroke-dark: #bfc8d0;
+  --color-other-icon: #686f78;
+  --color-other-background-el1: #2b2d31;
+  --color-other-background-el2: #222326;
+  --color-other-background-el3: #f2f4f9;
+  --color-other-background-el4: #ebeef4;
+
+  color: var(--color-text-content);
+  background: var(--color-other-background-el1);
+}
