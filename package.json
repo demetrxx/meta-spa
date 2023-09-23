@@ -1,5 +1,5 @@
 {
-  "name": "react-vite-template",
+  "name": "meta-spa",
   "private": true,
   "version": "1.0.0",
   "type": "module",
@@ -81,6 +81,5 @@
     "**/*.{ts,tsx}": "eslint --fix",
     "**/*.scss": "stylelint --fix",
     "**/*.{ts,tsx,scss}": "prettier --write --ignore-unknown"
-  },
-  "_id": "mavii-web@1.0.0"
+  }
 }
