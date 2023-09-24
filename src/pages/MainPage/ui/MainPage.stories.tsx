@@ -3,7 +3,7 @@ import { StoreDecorator } from 'shared/config/storybook/decorators/StoreDecorato
 import MainPage from './MainPage';
 
 const meta = {
-  title: 'pages/MainPage',
+  title: 'pages/AuthPage',
   component: MainPage,
   args: {},
   decorators: [StoreDecorator({})],

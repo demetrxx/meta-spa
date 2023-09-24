@@ -7,14 +7,14 @@ import { rtkAPI } from 'shared/api/rtkAPI';
 // }
 
 interface GetUserTokenResponse {
-  token: string;
+  accessToken: string;
 }
 
 const userAPI = rtkAPI.injectEndpoints({
   endpoints: (build) => ({
     getNewUserToken: build.mutation<GetUserTokenResponse, void>({
       query: () => ({
-        url: '/signin/anon',
+        url: '/auth/user',
         method: 'POST',
       }),
     }),
