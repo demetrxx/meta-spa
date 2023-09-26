@@ -18,6 +18,20 @@ const userAPI = rtkAPI.injectEndpoints({
         method: 'POST',
       }),
     }),
+    ping: build.mutation<GetUserTokenResponse, void>({
+      query: () => ({
+        url: '/ping',
+        method: 'POST',
+        headers: {},
+      }),
+    }),
+    refreshAccess: build.mutation<{ accessToken: string }, { refreshToken: string }>({
+      query: (body) => ({
+        url: '/auth/token',
+        method: 'POST',
+        body,
+      }),
+    }),
     // setJsonSettings: build.mutation<User, SetJsonSettingsArgs>({
     //   query: ({ userId, jsonSettings }) => ({
     //     url: `/users/${userId}`,
@@ -35,6 +49,6 @@ const userAPI = rtkAPI.injectEndpoints({
   }),
 });
 
+export const refreshAccessMutation = userAPI.endpoints.refreshAccess.initiate;
 export const getNewUserTokenQuery = userAPI.endpoints.getNewUserToken.initiate;
-// export const setJsonSettingsMutation = userAPI.endpoints.setJsonSettings.initiate;
-// export const getUserDataByIdQuery = userAPI.endpoints.getUserDataById.initiate;
+export const usePingMutation = userAPI.endpoints.ping.useMutation;

@@ -3,7 +3,9 @@ import { rtkAPI } from 'shared/api/rtkAPI';
 import { StateSchema } from './StateSchema';
 
 const interceptorMiddleware: Middleware<{}, StateSchema> = () => (next) => (action) => {
-  if (__PROJECT__ === 'storybook' && action.type?.includes('fetch')) {
+  const { type } = action;
+
+  if (__PROJECT__ === 'storybook' && type?.includes('fetch')) {
     return undefined;
   }
 

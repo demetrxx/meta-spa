@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { USER_LS_KEY } from 'shared/consts/localStorage';
+import { REFRESH_TOKEN_LS_KEY, ACCESS_TOKEN_LS_KEY } from 'shared/consts/localStorage';
 import type { UserSchema } from '../types/UserSchema';
 import { User } from '../types/UserSchema';
 import { saveJsonSettings } from '../services/saveJsonSettings';
@@ -14,15 +14,23 @@ export const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
+    setTokens: (
+      _,
+      action: PayloadAction<{
+        accessToken: string;
+        refreshToken: string;
+      }>
+    ) => {
+      localStorage.setItem(ACCESS_TOKEN_LS_KEY, action.payload.accessToken);
+      localStorage.setItem(REFRESH_TOKEN_LS_KEY, action.payload.refreshToken);
+    },
     setAuthData: (state, action: PayloadAction<User>) => {
       state.authData = action.payload;
     },
     logout: (state) => {
-      const user = localStorage.getItem(USER_LS_KEY);
-      if (user) {
-        state.authData = undefined;
-        localStorage.removeItem(USER_LS_KEY);
-      }
+      state.authData = undefined;
+      localStorage.removeItem(ACCESS_TOKEN_LS_KEY);
+      localStorage.removeItem(REFRESH_TOKEN_LS_KEY);
     },
   },
   extraReducers: (builder) => {
