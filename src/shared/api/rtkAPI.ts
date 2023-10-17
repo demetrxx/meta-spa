@@ -63,4 +63,5 @@ export const rtkAPI = createApi({
   reducerPath: 'api',
   baseQuery: baseQueryWithReAuth,
   endpoints: () => ({}),
+  tagTypes: ['Topics'],
 });

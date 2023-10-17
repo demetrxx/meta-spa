@@ -27,7 +27,12 @@ const Input = forwardRef((props: InputProps, ref?: ForwardedRef<HTMLInputElement
   const { value, onChange, type = 'text', autofocus, className, textarea, ...otherProps } = props;
 
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    onChange?.(e.target.value);
+    let { value } = e.target;
+    if (type === 'number') {
+      // @ts-ignore
+      value = Number(value);
+    }
+    onChange?.(value);
   };
 
   if (textarea) {

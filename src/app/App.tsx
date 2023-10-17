@@ -3,6 +3,7 @@ import { PageLoader } from 'widgets/PageLoader';
 import { getUserInitialized, initAuthData } from 'entities/User';
 import { useAppDispatch } from 'shared/lib/hooks';
 import { useSelector } from 'react-redux';
+import { NavBar } from 'widgets/NavBar';
 import { AppRouter } from './providers/router';
 
 export default function App() {
@@ -17,6 +18,7 @@ export default function App() {
 
   return (
     <div className="app">
+      <NavBar className="navbar" />
       <Suspense fallback={<PageLoader />}>
         <div className="page-content">
           <AppRouter />

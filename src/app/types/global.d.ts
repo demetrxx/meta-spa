@@ -9,6 +9,14 @@ declare module '*.svg' {
   export default SVG;
 }
 
+interface IdObject {
+  id: number;
+}
+
+type CreateData<T extends IdObject> = Omit<T, 'id'>;
+type UpdateData<T extends IdObject> = Partial<T> & Pick<T, 'id'>;
+type Id = number;
+
 type ValueOf<T> = T[keyof T];
 
 type DeepPartial<T> = T extends object

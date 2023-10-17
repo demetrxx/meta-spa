@@ -3,22 +3,22 @@ import { classNames } from 'shared/lib/func';
 import { Icon } from 'shared/ui';
 import cls from './Button.module.scss';
 
-interface ButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'type'> {
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   icon?: FC<SVGProps<SVGSVGElement>>;
   className?: string;
   children?: ReactNode;
-  type?: 'clear' | 'outlined';
+  variant?: 'clear' | 'outlined';
   iconSize?: number;
 }
 
 export const Button = memo((props: ButtonProps) => {
-  const { className, icon, iconSize, children, type = 'outlined', ...otherProps } = props;
+  const { className, icon, iconSize, variant = 'outlined', children, ...otherProps } = props;
 
   return (
     <button
       type="button"
       {...otherProps}
-      className={classNames(cls.button, [className, cls[type]], { [cls.icon]: !!icon })}
+      className={classNames(cls.button, [className, cls[variant]], { [cls.icon]: !!icon })}
     >
       {icon ? <Icon Svg={icon} size={iconSize} /> : children}
     </button>

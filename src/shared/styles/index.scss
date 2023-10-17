@@ -14,11 +14,18 @@ body {
 
 .app {
   position: relative;
+  display: flex;
 }
 
 .page-content {
   display: flex;
   align-items: center;
   justify-content: center;
+
+  width: calc(100% - var(--navbar-width));
   min-height: 100vh;
+}
+
+.navbar {
+  flex-shrink: 0;
 }
