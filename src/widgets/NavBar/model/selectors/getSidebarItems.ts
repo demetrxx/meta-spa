@@ -14,6 +14,10 @@ export const getSidebarItems = createSelector(getUserAuthData, (userAuthData) =>
       path: routes.getManageTopics(),
     },
     {
+      name: 'tickets',
+      path: routes.getManageTickets(),
+    },
+    {
       name: 'auth',
       path: routes.getAuth(),
     },

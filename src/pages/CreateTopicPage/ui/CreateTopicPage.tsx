@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import { Page } from 'widgets/Page';
 import { classNames } from 'shared/lib/func';
-import { CreateTopic } from 'features';
+import { CreateTopic } from 'features/manageTopics';
 import cls from './CreateTopicPage.module.scss';
 
 const CreateTopicPage = memo(() => (

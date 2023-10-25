@@ -1,0 +1,18 @@
+.topic {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 6px;
+}
+
+.actions {
+  display: flex;
+  gap: 20px;
+}
+
+.new-btn {
+  margin-bottom: 40px;
+  margin-left: auto;
+}

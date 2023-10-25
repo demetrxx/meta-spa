@@ -1,1 +1,1 @@
-export { EditTopicPageAsync as ManageTopicsPage } from './ui/EditTopicPage.async.ts';
+export { EditTopicPageAsync as EditTopicPage } from './ui/EditTopicPage.async.ts';

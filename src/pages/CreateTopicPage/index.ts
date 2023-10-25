@@ -1,1 +1,1 @@
-export { CreateTopicPageAsync as ManageTopicsPage } from './ui/CreateTopicPage.async.ts';
+export { CreateTopicPageAsync as CreateTopicPage } from './ui/CreateTopicPage.async.ts';
