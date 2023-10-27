@@ -34,7 +34,7 @@ const ManageTopicsPage = memo(() => {
 
       {topics.map(({ name, id, order }) => (
         <div key={id} className={cls.topic}>
-          <Link to={routes.getManageQuestionsByTopic(String(id))}>
+          <Link to={`${routes.getManageQuestions()}?topicId=${id}`}>
             <Text type="subtitle-1">
               {order}. {name}
             </Text>

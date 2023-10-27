@@ -5,7 +5,7 @@ import { AuthPage } from 'pages/AuthPage';
 import { ManageTopicsPage } from 'pages/ManageTopicsPage';
 import { EditTopicPage } from 'pages/EditTopicPage';
 import { CreateTopicPage } from 'pages/CreateTopicPage';
-import { ManageQuestionsByTopicPage } from 'pages/ManageQuestionsByTopicPage';
+import { ManageQuestionsPage } from 'pages/ManageQuestionsPage';
 import { EditQuestionPage } from 'pages/EditQuestionPage';
 import { CreateQuestionPage } from 'pages/CreateQuestionPage';
 import { ManageTicketsPage } from 'pages/ManageTicketsPage';
@@ -51,10 +51,7 @@ export const routes = {
   // Questions
   getEditQuestion: (id = ':id') => `/admin/content/questions/${id}/edit`,
   getCreateQuestion: () => '/admin/content/questions/new',
-  getManageQuestionsByTopic: (topicId = ':topicId') =>
-    `/admin/content/questions/byTopic/${topicId}`,
-  getManageQuestionsByTicket: (ticketId = ':ticketId') =>
-    `/admin/content/questions/byTicket/${ticketId}`,
+  getManageQuestions: () => `/admin/content/questions`,
 };
 
 export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
@@ -86,17 +83,17 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
     element: <ManageTicketsPage />,
   },
   [appRoutes.CREATE_TICKET]: {
-    path: routes.getCreateTopic(),
+    path: routes.getCreateTicket(),
     element: <CreateTicketPage />,
   },
   [appRoutes.EDIT_TICKET]: {
-    path: routes.getEditTopic(),
+    path: routes.getEditTicket(),
     element: <EditTicketPage />,
   },
   // Questions
   [appRoutes.MANAGE_QUESTIONS]: {
-    path: routes.getManageQuestionsByTopic(),
-    element: <ManageQuestionsByTopicPage />,
+    path: routes.getManageQuestions(),
+    element: <ManageQuestionsPage />,
   },
   [appRoutes.CREATE_QUESTION]: {
     path: routes.getCreateQuestion(),

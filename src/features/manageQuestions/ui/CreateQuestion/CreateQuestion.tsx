@@ -54,7 +54,9 @@ export const CreateQuestion = memo((props: CreateQuestionProps) => {
         {/* <Text type="subtitle-3">Order</Text> */}
         {/* <Input value={question.order} type="number" onChange={handleChange('order')} /> */}
 
-        <Button type="submit">Create Question</Button>
+        <Button type="submit" className={cls.btn}>
+          Create Question
+        </Button>
       </form>
     </div>
   );

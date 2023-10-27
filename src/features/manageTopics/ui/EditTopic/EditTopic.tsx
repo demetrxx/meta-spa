@@ -47,7 +47,9 @@ export const EditTopic = memo((props: CreateTopicProps) => {
         <Text type="subtitle-3">Order</Text>
         <Input value={topic.order} type="number" onChange={handleChange('order')} />
 
-        <Button type="submit">Update Topic</Button>
+        <Button type="submit" className={cls.btn}>
+          Update Topic
+        </Button>
       </form>
     </div>
   );

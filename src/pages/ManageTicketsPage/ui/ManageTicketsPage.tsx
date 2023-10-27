@@ -34,7 +34,7 @@ const ManageTicketsPage = memo(() => {
 
       {tickets.map(({ year, id, type }) => (
         <div key={id} className={cls.ticket}>
-          <Link to={routes.getManageQuestionsByTicket(String(id))}>
+          <Link to={`${routes.getManageQuestions()}?ticketId=${id}`}>
             <Text type="subtitle-1">
               {type}. {year}
             </Text>

@@ -6,8 +6,8 @@ const url = '/content/questions';
 
 const chatAPI = rtkAPI.injectEndpoints({
   endpoints: (build) => ({
-    getManyByTopic: build.query<Question[], Id>({
-      query: (topicId) => ({ url, params: { topicId } }),
+    getMany: build.query<Question[], { topicId?: Id; text?: string; ticketId: Id }>({
+      query: ({ topicId, text, ticketId }) => ({ url, params: { topicId, text, ticketId } }),
       forceRefetch: () => true,
       providesTags: ['Questions'],
     }),
@@ -42,7 +42,7 @@ const chatAPI = rtkAPI.injectEndpoints({
   }),
 });
 
-export const useGetQuestionsByTopicQuery = chatAPI.endpoints.getManyByTopic.useQuery;
+export const useGetQuestionsManyQuery = chatAPI.endpoints.getMany.useQuery;
 export const useGetQuestionByIdQuery = chatAPI.endpoints.getById.useQuery;
 export const useUpdateQuestionMutation = chatAPI.endpoints.updateQuestion.useMutation;
 export const useCreateQuestionMutation = chatAPI.endpoints.createQuestion.useMutation;
