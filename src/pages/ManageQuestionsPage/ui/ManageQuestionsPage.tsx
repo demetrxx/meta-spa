@@ -55,6 +55,7 @@ const ManageQuestionsPage = memo(() => {
         onChange={setQuestionText}
         className={cls.search}
         placeholder="Search questions"
+        style={{ marginBottom: 20 }}
       />
 
       {questions.map(({ name, id }) => (

@@ -19,7 +19,7 @@ export const getSidebarItems = createSelector(getUserAuthData, (userAuthData) =>
     },
     {
       name: 'auth',
-      path: routes.getAuth(),
+      path: routes.getAuth(''),
     },
   ];
 

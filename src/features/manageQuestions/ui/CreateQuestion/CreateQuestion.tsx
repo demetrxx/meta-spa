@@ -1,8 +1,9 @@
 import { FormEvent, memo, useEffect, useState } from 'react';
 import { classNames } from 'shared/lib/func';
-import { Button, Input, Text } from 'shared/ui';
+import { Button, Input, Select, Text } from 'shared/ui';
 import { Question, useCreateQuestionMutation } from 'entities/Question';
 import { useLocation } from 'react-router-dom';
+import { useGetAllTopicsQuery } from 'entities/Topic';
 import cls from './CreateQuestion.module.scss';
 
 interface CreateQuestionProps {
@@ -18,11 +19,22 @@ const initialQuestion: CreateData<Question> = {
   correct: 'A',
 };
 
+const types: { value: Question['type']; label: string }[] = [
+  { value: 'SINGLE', label: 'Одиночний вибір' },
+  { value: 'ORDER', label: 'Хронологічна послідовніть' },
+  { value: 'MATCH', label: 'Відповідність' },
+  { value: 'SELECT', label: 'Вибір 3 відповідей з 7' },
+];
+
 export const CreateQuestion = memo((props: CreateQuestionProps) => {
   const { className } = props;
   const [question, setQuestion] = useState<CreateData<Question>>(initialQuestion);
   const { search } = useLocation();
   const [createQuestion] = useCreateQuestionMutation();
+
+  const { data: topics } = useGetAllTopicsQuery();
+
+  const topicOptions = topics?.map(({ id, name }) => ({ value: id, label: name }));
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -42,6 +54,8 @@ export const CreateQuestion = memo((props: CreateQuestionProps) => {
     setQuestion((prev) => ({ ...((prev as Question) || {}), topicId: Number(topicId) }));
   }, [search]);
 
+  if (!topicOptions) return null;
+
   return (
     <div className={classNames(cls.createQuestion, [className])}>
       <form onSubmit={handleSubmit}>
@@ -51,8 +65,14 @@ export const CreateQuestion = memo((props: CreateQuestionProps) => {
         <Text type="subtitle-3">Description</Text>
         <Input value={question.desc} onChange={handleChange('desc')} />
 
-        {/* <Text type="subtitle-3">Order</Text> */}
-        {/* <Input value={question.order} type="number" onChange={handleChange('order')} /> */}
+        <Text type="subtitle-3">Type</Text>
+        <Select options={types} onChange={handleChange('type')} />
+
+        <Text type="subtitle-3">Topic</Text>
+        <Select options={topicOptions} onChange={(val) => handleChange('topicId')(Number(val))} />
+
+        <Text type="subtitle-3">Advice</Text>
+        <Input value={question.advice} onChange={handleChange('advice')} />
 
         <Button type="submit" className={cls.btn}>
           Create Question

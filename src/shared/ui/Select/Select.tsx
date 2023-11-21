@@ -4,7 +4,7 @@ import cls from './Select.module.scss';
 
 interface SelectProps {
   className?: string;
-  options: { value: string; label: string }[];
+  options: { value: string | number; label: string }[];
   defaultValue?: string;
   value?: string;
   onChange?: (value: string) => void;

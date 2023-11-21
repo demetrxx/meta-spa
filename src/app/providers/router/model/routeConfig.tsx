@@ -35,7 +35,7 @@ type AppRoutes = ValueOf<typeof appRoutes>;
 
 export const routes = {
   getMain: () => '/',
-  getAuth: () => '/auth/:provider?',
+  getAuth: (provider = ':provider?') => `/auth/${provider}`,
   // admin
 
   // Topics
