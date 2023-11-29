@@ -10,6 +10,10 @@ export const getSidebarItems = createSelector(getUserAuthData, (userAuthData) =>
       path: routes.getMain(),
     },
     {
+      name: 'payments',
+      path: routes.getPayments(),
+    },
+    {
       name: 'topics',
       path: routes.getManageTopics(),
     },

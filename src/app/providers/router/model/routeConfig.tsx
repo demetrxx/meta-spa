@@ -11,6 +11,7 @@ import { CreateQuestionPage } from 'pages/CreateQuestionPage';
 import { ManageTicketsPage } from 'pages/ManageTicketsPage';
 import { CreateTicketPage } from 'pages/CreateTicketPage';
 import { EditTicketPage } from 'pages/EditTicketPage';
+import { PaymentsPage } from 'pages/PaymentsPage';
 
 export type AppRoutesProps = RouteProps & {
   authOnly?: boolean;
@@ -19,6 +20,9 @@ export type AppRoutesProps = RouteProps & {
 const appRoutes = {
   MAIN: 'MAIN',
   AUTH: 'AUTH',
+  PAYMENTS: 'PAYMENTS',
+
+  // admin
   MANAGE_TOPICS: 'MANAGE_TOPICS',
   EDIT_TOPIC: 'EDIT_TOPIC',
   CREATE_TOPIC: 'CREATE_TOPIC',
@@ -33,9 +37,14 @@ const appRoutes = {
 } as const;
 type AppRoutes = ValueOf<typeof appRoutes>;
 
+function optParamPath(path: string, param?: string) {
+  return param ? `${path}/${param}` : path;
+}
+
 export const routes = {
   getMain: () => '/',
-  getAuth: (provider = ':provider?') => `/auth/${provider}`,
+  getAuth: (provider?: string) => optParamPath('/auth', provider),
+  getPayments: (status?: string) => optParamPath('/payments', status),
   // admin
 
   // Topics
@@ -60,8 +69,12 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
     element: <MainPage />,
   },
   [appRoutes.AUTH]: {
-    path: routes.getAuth(),
+    path: routes.getAuth(':provider?'),
     element: <AuthPage />,
+  },
+  [appRoutes.PAYMENTS]: {
+    path: routes.getPayments(':status?'),
+    element: <PaymentsPage />,
   },
   // --- admin ---
   // Topics
