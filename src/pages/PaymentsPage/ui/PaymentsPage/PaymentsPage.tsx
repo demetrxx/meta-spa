@@ -17,8 +17,8 @@ export const PaymentsPage = memo((props: PaymentsPageProps) => {
 
   const [createPayment] = useCreatePaymentMutation();
 
-  const handlePayment = async () => {
-    const res = await createPayment({ paymentOption: 1 }).unwrap();
+  const handlePayment = (paymentOption: number) => async () => {
+    const res = await createPayment({ paymentOption }).unwrap();
 
     if (!res.paymentUrl) {
       console.error('no payment url');
@@ -29,7 +29,8 @@ export const PaymentsPage = memo((props: PaymentsPageProps) => {
 
   return (
     <div className={classNames(cls.paymentsPage, [className])}>
-      <Button onClick={handlePayment}>Take my money!</Button>
+      <Button onClick={handlePayment(3)}>Monthly subscription</Button>
+      <Button onClick={handlePayment(4)}>Yearly payment</Button>
       {isPaymentSuccess && <div>Payment success</div>}
       {isPaymentFailure && <div>Payment failure</div>}
     </div>
